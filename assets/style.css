@@ -1,0 +1,289 @@
+.auth {
+	background-color: #f7f9fc;
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	grid-template-areas: "img img login";
+	grid-template-columns: 1fr;
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+	position: relative;
+	text-align: center;
+}
+
+.data-sekolah {
+	z-index: 100;
+	color: #fff;
+	bottom: 70px;
+	margin: auto;
+	position: fixed;
+	left: 50px;
+}
+
+.data-sekolah h3,
+.data-sekolah p {
+	margin: 0;
+	padding: 0;
+}
+
+.auth .img {
+	grid-area: img;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+}
+
+.auth .img::after {
+	content: "";
+	background-color: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.img img {
+	width: 100%;
+}
+
+.auth ul {
+	grid-area: login;
+	/* background-color: red; */
+	height: 100vh;
+	display: grid;
+	grid-template-columns: repeat(3, 200px);
+	list-style: none;
+	align-content: center;
+	justify-items: center;
+	grid-template-rows: 200px;
+	gap: 10px;
+	padding: 20px;
+}
+
+div.login-container {
+	width: 30vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+}
+.auth ul li {
+	/* background-color: #f7f9fc; */
+	margin: 0;
+	padding: 0;
+}
+
+.auth ul li a img {
+	width: 170px;
+}
+
+/* responsive */
+
+@media screen and (max-width: 1050px) {
+	.auth ul {
+		grid-template-columns: 1fr;
+		justify-content: center;
+		width: 40vw;
+	}
+	div.login-container {
+		width: 40vw;
+	}
+}
+@media screen and (max-width: 1000px) {
+	.auth ul {
+		grid-template-columns: 1fr;
+		justify-content: center;
+		width: 40vw;
+	}
+	div.login-container {
+		width: 40vw;
+	}
+}
+@media screen and (max-width: 900px) {
+	.auth .img {
+		display: none;
+	}
+	.auth ul {
+		grid-template-columns: 1fr;
+		justify-content: center;
+		width: 100vw;
+	}
+	div.login-container {
+		width: 70vw;
+		margin: auto;
+	}
+	.wrapper {
+		padding: 0 !important;
+	}
+}
+
+.text-rainbow {
+	background-image: linear-gradient(
+		to right,
+		rgb(204, 24, 24),
+		red,
+		rgb(23, 211, 23),
+		green,
+		rgb(10, 10, 190),
+		blue,
+		rgb(209, 196, 17),
+		rgb(192, 192, 19),
+		rgb(168, 38, 168),
+		purple
+	) !important;
+	background-size: 400% 100% !important;
+	background-clip: text !important;
+	-webkit-background-clip: text !important;
+	color: transparent !important;
+	animation: rainbow 8s ease-in-out infinite;
+}
+
+@keyframes rainbow {
+	0%,
+	100% {
+		background-position: 0 0;
+	}
+	50% {
+		background-position: 100% 0;
+	}
+}
+
+.callout p,
+.callout h5 {
+	/* background-color: red; */
+	padding: 0;
+	margin: 0;
+}
+
+.callout hr {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	margin-top: 10px;
+}
+
+p.label {
+	padding: 0;
+	margin: 4px 0;
+	background-color: orange;
+	display: inline;
+	padding: 2px;
+	color: #fff;
+	border-radius: 2px;
+}
+
+.menu-dashboard {
+	/* background-color: red; */
+	width: 70px !important;
+	height: 70px !important;
+	border-radius: 100% !important;
+	display: flex !important;
+	color: #fff !important;
+	justify-content: center !important;
+	align-items: center !important;
+	flex-direction: column !important;
+	cursor: pointer !important;
+}
+
+.menu-dashboard p {
+	margin: 0 !important;
+	padding: 0 !important;
+	font-size: 0.7rem !important;
+	text-transform: uppercase !important;
+}
+.menu-dashboard:hover {
+	color: rosybrown;
+}
+
+.menu-cepat {
+	display: flex !important;
+	justify-content: center !important;
+	align-items: center !important;
+	padding: 10px !important;
+}
+
+.loading {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	font-weight: bold;
+}
+
+th.action {
+	width: 100px !important;
+	background-color: red;
+}
+
+.nomor,
+.pilihan {
+	width: 40px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.text {
+	margin-left: 10px;
+	padding: 0 !important;
+	/* background-color: teal; */
+}
+
+.jawaban > .text {
+	/* background-color:red !important; */
+	padding: 10px 0 !important;
+}
+
+.pilihan {
+	width: 30px !important;
+	height: 30px !important;
+	cursor: pointer;
+	margin-top: 5px;
+}
+
+.container-kerjakan {
+	/* background-color: red; */
+	padding: 0 10px;
+}
+
+.jawaban {
+	display: flex;
+	align-items: flex-start !important;
+	/* background-color: red; */
+}
+
+.belajar {
+	position: relative;
+	/* overflow: hidden; */
+	min-height: 100vh;
+}
+
+div.viewpdf {
+	width: 100%;
+	min-height: 100vh;
+	/* background-color: teal; */
+}
+
+td {
+	text-transform: uppercase;
+}
+
+td.email {
+	text-transform: normal;
+}
+
+iframe.frame {
+	border: none !important;
+	width: 100% !important;
+	min-height: 100vh;
+}
