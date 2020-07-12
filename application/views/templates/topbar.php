@@ -1,3 +1,7 @@
+<?php
+  $rule=$this->session->userdata['rule'];
+?>
+
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -37,10 +41,12 @@
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <span class="dropdown-item dropdown-header text-capitalize"><?= $this->session->userdata['user_name']; ?></span>
           <div class="dropdown-divider"></div>
+          <?php if($rule !== 'admin') : ?>
           <a href="<?= base_url("pengaturan/profile") ?>" class="dropdown-item">
             <i class="fas fa-user mr-2"></i>Profile
           </a>
           <div class="dropdown-divider"></div>
+          <?php endif ?>
           <a href="<?= base_url('auth/logout') ?>" class="dropdown-item">
             <i class="fas fa-power-off mr-2"></i>Logout
           </a>

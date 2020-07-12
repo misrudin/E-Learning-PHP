@@ -4,8 +4,8 @@ $id=$this->session->userdata['user_id'];
 $rule=$this->session->userdata['rule'];
 
 if($rule=='admin'){
-  $query="select * from admin where id ='$id'";
-
+  $query = "select sekolah.nama_sekolah as nama, sekolah.* from sekolah where sekolah.id=$id";
+  
   $user=$this->db->query($query)->row_array();
 }
 if($rule=='guru'){
@@ -33,14 +33,16 @@ if($rule=='siswa'){
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
+      <?php if($rule !== 'admin') : ?>
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="<?= base_url('assets/images/'); ?>none.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
-        <div class="info">
+        <div class="info position-relative nama_user">
           <a href="<?= base_url('pengaturan/profile?user=').$this->session->userdata['user_id'] ?>" class="d-block text-capitalize"><?= $user['nama'] ?></a>
         </div>
       </div>
+      <?php endif ?>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -59,19 +61,21 @@ if($rule=='siswa'){
        
           <li class="nav-item has-treeview <?php if($title == "Sekolah" || $title == "Profile" || $title == "Password"){echo "menu-open";} ?>">
           <a href="javascript:void(0)" class="<?php if($title == "Sekolah" || $title == "Profile" || $title == "Password"){echo "nav-link active";}else{echo "nav-link";} ?>">
-              <i class="nav-icon fa fa-cog"></i>
+              <i class="nav-icon fa fa-cogs"></i>
               <p>
                 Pengaturan
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
+            <?php if($rule !== 'admin') : ?>
               <li class="nav-item">
               <a href="<?= base_url("pengaturan/profile") ?>" class="<?php if($title == "Profile"){echo "nav-link active";}else{echo "nav-link";} ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Profile</p>
                 </a>
               </li>
+              <?php endif ?>
               <li class="nav-item">
               <a href="<?= base_url("pengaturan/password") ?>" class="<?php if($title == "Password"){echo "nav-link active";}else{echo "nav-link";} ?>">
                   <i class="far fa-circle nav-icon"></i>

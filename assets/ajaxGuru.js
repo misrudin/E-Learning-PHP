@@ -132,6 +132,11 @@ $(document).ready(function () {
 		$("#nip").val("");
 		$("#nama").val("");
 		$("#email").val("example@email.com");
+		$("#alamat").val("");
+		$("#kelamin").val("");
+		$("#tanggalLahir").val("");
+		$("#tempatLahir").val("");
+		$("#phone").val("");
 	});
 	$("#guru").on("click", "#edit", function () {
 		$(".modal-title").html("Edit");

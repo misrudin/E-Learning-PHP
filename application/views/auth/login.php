@@ -32,26 +32,6 @@
           <p><?= $sekolah['alamat'] ?></p>
       </div>
     <!-- pilih login -->
-    <?php if($sbg=="") { ?>
-      <div class="row mt-sm-5 mb-5">
-        <p class="pesan d-none" id="logout"><?= $this->session->flashdata('message'); ?></p>
-		          <div class="col-xs-12 col-sm-12 mb-5">
-              <a href="<?= base_url('/'); ?>?sbg=admin">
-              <img src="<?= base_url('assets/images/'); ?>admin.png" class="img-responsive"  style="max-width:150px"/>
-              </a>
-              </div>
-              <div class="col-xs-6 col-sm-6 mb-5">
-              <a href="<?= base_url('/'); ?>?sbg=guru">
-              <img src="<?= base_url('assets/images/'); ?>guru.png" class="img-responsive" style="max-width:150px"/>
-              </a>
-              </div>
-              <div class="col-xs-6 col-sm-6 mb-5">
-              <a href="<?= base_url('/'); ?>?sbg=siswa">
-              <img src="<?= base_url('assets/images/'); ?>siswa.png" class="img-responsive" style="max-width:150px"/>
-              </a>
-              </div>
-		</div>
-    <?php } else { ?>
       <div class="login-container row">
         <div class="col-md-8 col-sm-10">
       <img src="<?= base_url('assets/images/'); ?><?php echo $sbg;?>.png" class="img-responsive mb-3" style="max-width:125px"/>
@@ -66,9 +46,9 @@
                             <span class="input-group-text"><i class="fa fa-user"></i></span>
                           </div>
                         <input type="text" class="form-control" id="username" placeholder="<?php 
-                          if($sbg=="admin"){echo "Email";}
-                          if($sbg=="guru"){echo "Nip";}
-                          if($sbg=="siswa"){echo "Nis";}
+                          if($sbg=="sekolah"){echo "NPSN";}
+                          if($sbg=="guru"){echo "NIP";}
+                          if($sbg=="siswa"){echo "NIS";}
                         ?>" name="username" >
                         </div>
                       </div>
@@ -87,9 +67,9 @@
                   <div class="social-auth-links text-center mb-3">
                     <p class="text-capitalize">- atau masuk sebagai -</p>
                     <div class="d-flex justify-content-around">
-                      <?php if($sbg !="admin") {?>
-                        <a href="<?= base_url('/'); ?>?sbg=admin" class="btn px-2 btn-dark">
-                          <i class="fa fa-cog mr-1"></i> Admin
+                      <?php if($sbg !="sekolah") {?>
+                        <a href="<?= base_url('/'); ?>?sbg=sekolah" class="btn px-2 btn-dark">
+                          <i class="fa fa-cog mr-1"></i> Sekolah
                         </a>
                       <?php } ?>
                       <?php if($sbg !="guru") {?>
@@ -106,7 +86,6 @@
                   </div>
             </div>
             </div>
-    <?php } ?>
   </div>
   </div>
 

@@ -287,3 +287,8 @@ iframe.frame {
 	width: 100% !important;
 	min-height: 100vh;
 }
+
+.sidebar.nama_user{
+	background-color: red !important;
+	max-width: 100px;
+}

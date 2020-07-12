@@ -5,6 +5,10 @@
                   <th>NIP</th>
                   <th>NAMA</th>
                   <th>EMAIL</th>
+                  <th>ALAMAT</th>
+                  <th>PHONE</th>
+                  <th>TEMPAT, TGL LAHIR</th>
+                  <th>L/P</th>
                   <th class="text-center action bg-danger">ACTION</th>
                 </tr>
                 </thead>
@@ -16,6 +20,10 @@
                   <td><?= $guru['nip'] ?></td>
                   <td><?= $guru['nama_guru'] ?></td>
                   <td class="email"><?= $guru['email'] ?></td>
+                  <td><?= $guru['phone'] ?></td>
+                  <td><?= $guru['alamat'] ?></td>
+                  <td><?php if($guru['tempat_lahir'] !=="" && $guru['tanggal_lahir'] !==""){ echo($guru['tempat_lahir'].",".$guru['tanggal_lahir']);}else{echo("");} ?></td>
+                  <td><?= $guru['kelamin'] ?></td>
                   <td class="text-center">
                   <a href="javascript:void(0)" data-id="<?= $guru['id'] ?>" id="edit"  data-toggle="modal" data-target="#modal-input" class="badge badge-warning mr-3 edit"><i class="far fa-edit"></i></a>
                    <a href="javascript:void(0)" data-id="<?= $guru['id'] ?>" id="hapus" class="badge badge-danger"><i class="fas fa-trash-alt"></i></a>

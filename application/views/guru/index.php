@@ -50,13 +50,41 @@
                     <input type="text" class="form-control" id="nip" name="nip" placeholder="Nip.." required>
               </div>
               <div class="form-group">
-                    <label for="nama" class="text-capitalize">nama</label>
+                    <label for="nama" class="text-capitalize">Nama</label>
                     <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama.." required>
               </div>
               <div class="form-group">
-                    <label for="email" class="text-capitalize">email</label>
+                    <label for="alamat" class="text-capitalize">Alamat</label>
+                    <textarea class="form-control" rows="2" id="alamat" name="alamat"></textarea>
+              </div>
+              <div class="form-group">
+                    <label for="email" class="text-capitalize">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Email.." required>
               </div>
+              <div class="form-group">
+                    <label for="phone" class="text-capitalize">Phone</label>
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone.." required>
+              </div>
+              <div class="form-group">
+                    <label for="tempatLahir" class="text-capitalize">Tempat Lahir</label>
+                    <input type="text" class="form-control" id="tempatLahir" name="tempatLahir" placeholder="Tempat Lahir.." required>
+              </div>
+              <div class="form-group">
+                    <label for="tanggalLahir" class="text-capitalize">Tanggal Lahir</label>
+                    <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                    </div>
+                    <input type="text" id="tanggalLahir" name="tanggalLahir" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label>Gender (L/P)</label>
+                  <select name="kelamin" id='kelamin' class="form-control">
+                  <option value="L">L (Laki-Laki)</option>
+                  <option value="P">P (Perempuan)</option>
+                  </select>
+                </div>
 
 
             </div>

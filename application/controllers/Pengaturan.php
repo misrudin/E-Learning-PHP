@@ -24,6 +24,10 @@ class Pengaturan extends CI_Controller {
 			$this->form_validation->set_rules('npsn', 'NPSN', 'required');
 			$this->form_validation->set_rules('sekolah', 'Sekolah', 'required');
 			$this->form_validation->set_rules('alamat', 'Alamat', 'required');
+			$this->form_validation->set_rules('email', 'Email', 'trim|valid_email');
+			$this->form_validation->set_rules('phone', 'Phone', 'trim');
+			$this->form_validation->set_rules('website', 'Website', 'trim');
+			$this->form_validation->set_rules('password', 'Password', 'required');
 	
 		if($this->form_validation->run()){
 			return true;
@@ -59,20 +63,35 @@ class Pengaturan extends CI_Controller {
 
       public function simpanSekolah(){
             if($this->_validation("save")){ 
+                  $id=$this->session->userdata['user_id'];
+                  $password=$this->input->post('password');
                   $data = [
                         'npsn' => htmlspecialchars($this->input->post('npsn', true)),
                         'nama_sekolah' => htmlspecialchars($this->input->post('sekolah', true)),
                         'alamat' => htmlspecialchars($this->input->post('alamat', true)),
-                         ];
-                         
-                    $this->db->set($data);
-                    $this->db->where('id',1);
-                    $this->db->update('sekolah'); 
-      
-                  $response = [
-                              'status'=>'sukses',
-                              'pesan'=>'Data berhasil disimpan',
-                  ];
+                        'email' => htmlspecialchars($this->input->post('email', true)),
+                        'website' => htmlspecialchars($this->input->post('website', true)),
+                        'phone' => htmlspecialchars($this->input->post('phone', true)),
+                        'tingkat' => htmlspecialchars($this->input->post('tingkat', true)),
+                        ];
+
+
+                        $user = $this->db->get_where('sekolah', ['id' => $id])->row_array();
+                        if (password_verify($password, $user['password'])) {
+                              $this->db->set($data);
+                              $this->db->where('id',1);
+                              $this->db->update('sekolah'); 
+                  
+                              $response = [
+                                          'status'=>'sukses',
+                                          'pesan'=>'Data berhasil disimpan',
+                              ];
+                        }else{
+                              $response = [
+                                    'status'=>'gagal',
+                                    'pesan'=>'Password salah!',
+                        ];
+                        }
                   }else{
                         $response =[
                               'status'=>'gagal',
@@ -88,27 +107,6 @@ class Pengaturan extends CI_Controller {
                   $rule=$this->session->userdata['rule'];
                   $password=$this->input->post('password');
                   
-                  if($rule=="admin"){
-                        $data = [
-                              'nama' => htmlspecialchars($this->input->post('nama', true)),
-                              'email' => htmlspecialchars($this->input->post('email', true)),
-                               ];
-                        $user = $this->db->get_where('admin', ['id' => $id])->row_array();
-                        if (password_verify($password, $user['password'])) {
-                              $this->db->set($data);
-                              $this->db->where('id',$id);
-                              $this->db->update('admin'); 
-                              $response = [
-                                    'status'=>'sukses',
-                                    'pesan'=>'Data berhasil disimpan',
-                        ];
-                        }else{
-                              $response = [
-                                    'status'=>'gagal',
-                                    'pesan'=>'Password salah!',
-                        ];
-                        }
-                  }
                   
                   if($rule=="guru"){
                         $data = [
@@ -153,12 +151,6 @@ class Pengaturan extends CI_Controller {
                         ];
                         }
                   }
-
-
-                         
-                    
-      
-                 
                   }else{
                         $response =[
                               'status'=>'gagal',
@@ -213,19 +205,18 @@ class Pengaturan extends CI_Controller {
             if($this->_validation("password")){ 
                   $id=$this->session->userdata['user_id'];
                   $rule=$this->session->userdata['rule'];
-                  $password=$this->input->post('lama');
-                  $password=$this->input->post('lama');
+                  $password=$this->input->post('baru');
+                  $passwordlama=$this->input->post('lama');
                   
                   if($rule=="admin"){
                         $data = [
-                              'nama' => htmlspecialchars($this->input->post('nama', true)),
-                              'email' => htmlspecialchars($this->input->post('email', true)),
+                              'password' => password_hash(htmlspecialchars($this->input->post('baru', true)), PASSWORD_DEFAULT),
                                ];
-                        $user = $this->db->get_where('admin', ['id' => $id])->row_array();
-                        if (password_verify($password, $user['password'])) {
+                        $user = $this->db->get_where('sekolah', ['id' => $id])->row_array();
+                        if (password_verify($passwordlama, $user['password'])) {
                               $this->db->set($data);
                               $this->db->where('id',$id);
-                              $this->db->update('admin'); 
+                              $this->db->update('sekolah'); 
                               $response = [
                                     'status'=>'sukses',
                                     'pesan'=>'Data berhasil disimpan',
@@ -240,11 +231,10 @@ class Pengaturan extends CI_Controller {
                   
                   if($rule=="guru"){
                         $data = [
-                              'nama_guru' => htmlspecialchars($this->input->post('nama', true)),
-                              'email' => htmlspecialchars($this->input->post('email', true)),
+                              'password' => password_hash(htmlspecialchars($this->input->post('baru', true)), PASSWORD_DEFAULT),
                                ];
                         $user = $this->db->get_where('guru', ['id' => $id])->row_array();
-                        if (password_verify($password, $user['password'])) {
+                        if (password_verify($passwordlama, $user['password'])) {
                               $this->db->set($data);
                               $this->db->where('id',$id);
                               $this->db->update('guru'); 
@@ -262,11 +252,10 @@ class Pengaturan extends CI_Controller {
 
                   if($rule=="siswa"){
                         $data = [
-                              'nama' => htmlspecialchars($this->input->post('nama', true)),
-                              'email' => htmlspecialchars($this->input->post('email', true)),
+                              'password' => password_hash(htmlspecialchars($this->input->post('baru', true)), PASSWORD_DEFAULT),
                                ];
                         $user = $this->db->get_where('siswa', ['id' => $id])->row_array();
-                        if (password_verify($password, $user['password'])) {
+                        if (password_verify($passwordlama, $user['password'])) {
                               $this->db->set($data);
                               $this->db->where('id',$id);
                               $this->db->update('siswa'); 
@@ -281,12 +270,6 @@ class Pengaturan extends CI_Controller {
                         ];
                         }
                   }
-
-
-                         
-                    
-      
-                 
                   }else{
                         $response =[
                               'status'=>'gagal',

@@ -26,6 +26,9 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="<?= base_url('assets/Admin/'); ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- InputMask -->
+<script src="<?= base_url('assets/Admin/'); ?>plugins/moment/moment.min.js"></script>
+<script src="<?= base_url('assets/Admin/'); ?>plugins/inputmask/jquery.inputmask.min.js"></script>
 <!-- SweetAlert2 -->
 <script src="<?= base_url('assets/Admin/'); ?>plugins/sweetalert2/sweetalert2.min.js"></script>
 <!-- Toastr -->
@@ -66,6 +69,12 @@
 <script type="text/javascript">
 $(document).ready(function () {
   bsCustomFileInput.init();
+      //Datemask dd/mm/yyyy
+      $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Money Euro
+    $('[data-mask]').inputmask()
 
   const pesan=$('#pesan').html()
   const pesanError=$('#pesanError').html()

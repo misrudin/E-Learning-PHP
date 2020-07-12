@@ -25,6 +25,11 @@ class Guru_model extends CI_Model
 			$this->form_validation->set_rules('nip', 'Nip', 'required|is_unique[guru.nip]');
 			$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
 			$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');	
+			$this->form_validation->set_rules('alamat', 'Alamat', 'trim');	
+			$this->form_validation->set_rules('phone', 'Phone', 'trim');	
+			$this->form_validation->set_rules('tempatLahir', 'Tempat Lahir', 'trim');	
+			$this->form_validation->set_rules('tanggalLahir', 'Tanggal Lahir', 'trim');	
+			$this->form_validation->set_rules('kelamin', 'Gender', 'trim');	
 	
 		if($this->form_validation->run()){
 			return true;
@@ -35,7 +40,12 @@ class Guru_model extends CI_Model
 		if($mode == "edit"){
 		$this->form_validation->set_rules('nip', 'Nip', 'required');
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');	
+				$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');	
+				$this->form_validation->set_rules('alamat', 'Alamat', 'trim');	
+				$this->form_validation->set_rules('phone', 'Phone', 'trim');	
+				$this->form_validation->set_rules('tempatLahir', 'Tempat Lahir', 'trim');	
+				$this->form_validation->set_rules('tanggalLahir', 'Tanggal Lahir', 'trim');	
+				$this->form_validation->set_rules('kelamin', 'Gender', 'trim');	
 	
 			if($this->form_validation->run()){
 				return true;
@@ -51,7 +61,12 @@ class Guru_model extends CI_Model
             'nama_guru' => htmlspecialchars($this->input->post('nama',true)),
             'email' => htmlspecialchars($this->input->post('email',true)),
             'rule' => "guru",
-            'password' => password_hash($this->input->post('nip'), PASSWORD_DEFAULT)
+						'password' => password_hash($this->input->post('nip'), PASSWORD_DEFAULT),
+						'alamat' => htmlspecialchars($this->input->post('alamat',true)),
+						'tempat_lahir' => htmlspecialchars($this->input->post('tempatLahir',true)),
+						'tanggal_lahir' => htmlspecialchars($this->input->post('tanggalLahir',true)),
+						'kelamin' => htmlspecialchars($this->input->post('kelamin',true)),
+						'phone' => htmlspecialchars($this->input->post('phonr',true)),
         ];
 
         $this->db->insert('guru', $data);
@@ -62,6 +77,11 @@ class Guru_model extends CI_Model
 			'nip' => htmlspecialchars($this->input->post('nip', true)),
 			'nama_guru' => htmlspecialchars($this->input->post('nama',true)),
 			'email' => htmlspecialchars($this->input->post('email',true)),
+			'alamat' => htmlspecialchars($this->input->post('alamat',true)),
+			'tempat_lahir' => htmlspecialchars($this->input->post('tempatLahir',true)),
+			'tanggal_lahir' => htmlspecialchars($this->input->post('tanggalLahir',true)),
+			'kelamin' => htmlspecialchars($this->input->post('kelamin',true)),
+			'phone' => htmlspecialchars($this->input->post('phonr',true)),
 		];
 		$this->db->set($data);
 		$this->db->where('id',$id);

@@ -19,12 +19,21 @@
   <div class="row">
     <div class="col-md-6 col-sm-12">
         <div class="row">
+        <?php if($user['rule'] !== 'admin') : ?>
               <div class="col-6 menu-cepat">
               <a href="<?= base_url('pengaturan/profile') ?>" class="menu-dashboard bg-dark">
                   <i class="fa fa-user mb-1"></i>
                   <p>Profile</p>
               </a>
               </div>
+              <?php else : ?>
+              <div class="col-6 menu-cepat">
+              <a href="<?= base_url('pengaturan/sekolah') ?>" class="menu-dashboard bg-dark">
+                  <i class="fa fa-user mb-1"></i>
+                  <p>Sekolah</p>
+              </a>
+              </div>
+              <?php endif ?>
               <div class="col-6 menu-cepat">
                   <a href="<?= base_url('materi') ?>" class="menu-dashboard bg-warning">
                   <i class="fa fa-book-open mb-1"></i>

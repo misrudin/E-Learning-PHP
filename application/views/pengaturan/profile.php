@@ -10,7 +10,7 @@
         <div class="card card-default color-palette-box">
           <div class="card-header bg-dark">
             <h3 class="card-title text-light">
-              <i class="fas fa-cog"></i>
+              <i class="fas fa-cog mr-1"></i>
               Profile
             </h3>
           </div>
